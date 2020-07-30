@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="info">
+
+    <Appenders>
+        <RollingFile name="RollingFile" fileName="${sys:log.dir}/AwsSecretsAgent.log"
+                     filePattern="${sys:log.dir}/AwsSecretsAgent.log.%d{yyyy-MM-dd}">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %X{CID:--} %-5p [%t] %c: %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="2"/>
+        </RollingFile>
+
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %X{CID:--} %-5p [%t] %c: %m%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="${LogLevel:-INFO}">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

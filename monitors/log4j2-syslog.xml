@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="info">
+
+    <Appenders>
+        <Syslog name="Syslog" host="syslog.logging" port="514" protocol="TCP" facility="LOCAL0" >
+            <PatternLayout>
+                <pattern>awssecretsagent {"index": "service", "ccds_cluster_title": "${clusterTitle}", "type": "awssecrets-agent", "event": "%d{ISO8601_OFFSET_DATE_TIME_HH} %X{CID:--} %-5p [%t] %c: %m%n"}</pattern>
+            </PatternLayout>
+        </Syslog>
+
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %X{CID:--} %-5p [%t] %c: %m%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="${LogLevel:-INFO}">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="Syslog"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

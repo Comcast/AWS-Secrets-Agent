@@ -1,0 +1,7 @@
+*.log
+target/
+local/secrets
+*.iml
+.idea/
+.DS_Store
+._*
