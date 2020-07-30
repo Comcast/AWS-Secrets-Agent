@@ -7,7 +7,7 @@
 
     <groupId>com.secretsagent</groupId>
     <artifactId>aws-secrets-agent</artifactId>
-    <version>0.0.33</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>AWS Secrets Agent</name>
